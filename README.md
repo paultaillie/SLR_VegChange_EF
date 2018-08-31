@@ -18,30 +18,17 @@ set working directory to get scripts to run.  Simply unzip the folder, open R,
 open the project file with the same name as that found at the top of this 
 document.  Required packages may have to be installed.
 
-### Naming and Organization of Files
-The first letter or a script file relates to a hierarchy of dependency.  For 
-example, scripts starting with "a" need to be run before scripts starting with 
-successive letters, e.g. "b", "c", etc.
+### Naming and Organization of Files and Folders
 
-"a" scripts
-  * do not depend on other scripts
-  * use data from "raw_data" folder
-  * typically involve data formatting
-  * end by writing processed data for use in successive scripts
-
-"b" scripts
-  * Depend on output from "a" scripts
-  * Read in "proccessed_data"
-  * Typically perform an analysis
+raw_data
+  * by_plot_veg.csv - contains field collected vegetation and soil data
+  * elev_samples.csv - contains elevation samples from LiDAR-derived DEM
   
-"c" scripts
-  * Depend on "processed_data"
-  * Typically produce graphics
-  
- "Figures"
-   * Destination folder for created graphics
-
-## List of Files
+scripts
+  * figure2_script.R - Change in vegetation metrics by site and community
+  * figure3_script.R - soil and elevation summaries
+  * table1_script.R - linear model effect sizes for soil sodium and elevation
+  * table2_script - measured vegetation density at veg plots in each sampling period
 
 
 
