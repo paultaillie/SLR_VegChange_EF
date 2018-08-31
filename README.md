@@ -1,4 +1,4 @@
-# SLR_Veg
+# SLR_VegChange_EF
 Formatting and analysis of field-collected vegetation data from eastern North 
 Carolina,USA
 
