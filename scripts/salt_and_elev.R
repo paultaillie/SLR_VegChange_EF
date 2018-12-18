@@ -36,7 +36,8 @@ dat<-read.csv(file="raw_data/by_plot_veg.csv")%>%
   rename(Shrubs=shrub.density)%>%
   arrange(year,plots)%>%
   mutate(elev=c(elev$av_elev,elev$av_elev))%>%
-  mutate(Na=standardize(Na))
+  mutate(Na=standardize(Na))%>%
+  mutate(Dist=standardize(dist_to_shore))
 
 
 #formatting  --------------
@@ -90,6 +91,7 @@ saltelev<-function(dat,community,response){
   dat_all<-data.frame(
     Na=dat.comm$Na,
     elev=dat.comm$elev,
+    dist=dat.comm$Dist,
     site=dat.comm$site,
     response=ceiling(response.dat),
     year=dat.comm$year,
@@ -117,28 +119,28 @@ saltelev<-function(dat,community,response){
     site=dat_2016$site,
     response=response.diff,
     Na=((dat_2016$Na+dat_2004$Na)/2),
-    elev=dat_2016$elev)
-  dat_diff2<-dat_diff%>%
-    mutate(Na.standard=standardize(Na))%>%
-    mutate(elev.standard=standardize(elev))
+    elev=dat_2016$elev,
+    dist=dat_2016$dist)
+
   
   summary(diff_mod<-glm(response~                 
-                          Na.standard+
-                          elev.standard,
-                        data=dat_diff2))
+                          Na+I(Na^2)+
+                          elev+dist,
+                        data=dat_diff))
   
   #plot linear relationship
   dat_diff%>%
     ggplot()+
     geom_point(aes(x=Na,y=response))+
-    geom_smooth(aes(x=Na,y=response),method=lm)
+    geom_smooth(aes(x=Na,y=response),method=lm,formula=y~poly(x,2))
   
   
   #store and output results
   results<-c(summary(diff_mod)$coefficients[2,c(1,2,4)],
-             summary(diff_mod)$coefficients[3,c(1,2,4)])
-  plot.temp<-
-    
+             summary(diff_mod)$coefficients[3,c(1,2,4)],
+             summary(diff_mod)$coefficients[4,c(1,2,4)],
+             summary(diff_mod)$coefficients[5,c(1,2,4)])
+ 
     
   return(round(results,3))
 }

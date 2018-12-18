@@ -138,7 +138,7 @@ saltelev<-function(dat,community,response){
   #store and output results
   results<-c(summary(diff_mod)$coefficients[2,c(1,2,4)],
              summary(diff_mod)$coefficients[3,c(1,2,4)])
-  plot.temp<-
+  #plot.temp<-
     
     
   return(round(results,3))
