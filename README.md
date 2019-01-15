@@ -1,11 +1,11 @@
 # SLR_VegChange_EF
 Formatting and analysis of field-collected vegetation data from eastern North 
-Carolina,USA
+Carolina, USA
 
 ### Manuscript Citation
 P. J. Taillie, C. E. Moorman, B. Poulter, M. Ardon, R. E. Emanuel. *In Review.*
   Decadal-scale vegetation change driven by salinity at the leading edge of 
-  rising sea level. Earth's Future.
+  rising sea level. Ecosystems.
   
 R project written by Paul J. Taillie
 30 August, 2018

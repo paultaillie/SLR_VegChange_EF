@@ -87,8 +87,6 @@ summary(diff_mod<-lm(response~
 
 ################
 #interaction
-interaction.mod<-lm(Saplings~Na+elev,data=dat)
-summary(interaction.mod)
 
 
 

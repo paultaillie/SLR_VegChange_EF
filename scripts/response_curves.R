@@ -139,14 +139,12 @@ tiff("figure2.tiff",
 plot1<-ggplot(predictions.Na)+
   geom_line(aes(x=Sodium,y=fit,color=Metric),size=2)+
   ylab("Proportional change in vegetation")+
-  ylim(-1,1)+xlab("Soil sodium concentration (mg-Na/kg-soil)")+
-  ggtitle("A")
+  ylim(-1,1)+xlab("Soil sodium concentration (mg-Na/kg-soil)")
 
 plot2<-ggplot(predictions.elev)+
   geom_line(aes(x=Elevation,y=fit,color=Metric),size=2)+
   ylab("Proportional change in vegetation")+
-  ylim(-1,1)+xlab("Elevation (m)")+
-  ggtitle("B")
+  ylim(-1,1)+xlab("Elevation (m)")
 
 grid.arrange(plot1,plot2,ncol=1)
 dev.off()
